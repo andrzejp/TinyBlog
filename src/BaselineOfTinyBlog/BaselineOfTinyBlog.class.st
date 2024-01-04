@@ -8,8 +8,5 @@ Class {
 BaselineOfTinyBlog >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [ "Packages"
-		spec
-			package: 'TinyBlog';
-			package: 'TinyBlog-Tests' with: [ spec requires: #( 'TinyBlog' ) ] ]
+	spec for: #common do: [ "Packages" spec package: 'TinyBlog' ]
 ]
