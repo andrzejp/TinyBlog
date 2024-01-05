@@ -101,6 +101,20 @@ TBBlog >> allVisibleBlogPostsFromCategory: aCategory [
 		  post isVisible ]
 ]
 
+{ #category : #accessing }
+TBBlog >> catetegoriesWithVisiblePosts [
+
+	^ (posts
+		   select: [ :p | p isVisible ]
+		   thenCollect: [ :p | p category ]) asSet
+]
+
+{ #category : #accessing }
+TBBlog >> deleteCategoryAndPosts: aCategory [
+
+	posts removeAllSuchThat: [ :p | p category = aCategory ]
+]
+
 { #category : #initialization }
 TBBlog >> initialize [ 
 	super initialize.
@@ -111,6 +125,15 @@ TBBlog >> initialize [
 TBBlog >> removeAllPosts [
 
 	posts := OrderedCollection new
+]
+
+{ #category : #accessing }
+TBBlog >> renameCategory: aCategory toBe: newCategory [
+
+	posts := posts collect: [ :p |
+		         p category = aCategory
+			         ifTrue: [ p category: newCategory ]
+			         ifFalse: [ p ] ]
 ]
 
 { #category : #accessing }
