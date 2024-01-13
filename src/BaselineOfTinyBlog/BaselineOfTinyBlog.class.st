@@ -8,5 +8,18 @@ Class {
 BaselineOfTinyBlog >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [ "Packages" spec package: 'TinyBlog' ]
+	spec for: #common do: [ "Dependencies"
+		self voyage: spec.
+
+		"Packages"
+		spec package: 'TinyBlog' ]
+]
+
+{ #category : #'as yet unclassified' }
+BaselineOfTinyBlog >> voyage: spec [
+
+	spec baseline: 'Voyage' with: [
+		spec
+			loads: #( 'mongo tests' );
+			repository: 'github://pharo-nosql/voyage/mc' ]
 ]
