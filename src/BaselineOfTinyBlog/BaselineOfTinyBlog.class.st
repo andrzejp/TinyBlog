@@ -20,6 +20,6 @@ BaselineOfTinyBlog >> voyage: spec [
 
 	spec baseline: 'Voyage' with: [
 		spec
-			loads: #( 'mongo tests' );
+			loads: #( 'mongo' 'memory' );
 			repository: 'github://pharo-nosql/voyage/mc' ]
 ]
