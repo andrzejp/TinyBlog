@@ -11,9 +11,19 @@ BaselineOfTinyBlog >> baseline: spec [
 	spec for: #common do: [ "Dependencies"
 		self voyage: spec.
 		self seaside: spec.
+		self bootstrap: spec.
 
 		"Packages"
 		spec package: 'TinyBlog' ]
+]
+
+{ #category : #'as yet unclassified' }
+BaselineOfTinyBlog >> bootstrap: spec [
+
+	spec
+		baseline: 'Bootstrap5'
+		with: [
+		spec repository: 'github://astares/Seaside-Bootstrap5:master/src' ]
 ]
 
 { #category : #'as yet unclassified' }
