@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'blog',
 		'post',
-		'first'
+		'first',
+		'previousRepository'
 	],
 	#category : #'TinyBlog-Tests'
 }
@@ -13,6 +14,8 @@ Class {
 TBBlogTest >> setUp [
 
 	super setUp.
+	previousRepository := VORepository current.
+	VORepository setRepository: VOMemoryRepository new.
 	blog := TBBlog current.
 	blog removeAllPosts.
 
@@ -31,7 +34,7 @@ TBBlogTest >> setUp [
 { #category : #running }
 TBBlogTest >> tearDown [
 
-	TBBlog reset.
+	VORepository setRepository: previousRepository.
 	super tearDown
 ]
 

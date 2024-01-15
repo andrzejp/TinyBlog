@@ -4,9 +4,6 @@ Class {
 	#instVars : [
 		'posts'
 	],
-	#classInstVars : [
-		'uniqueInstance'
-	],
 	#category : #'TinyBlog-Base'
 }
 
@@ -53,9 +50,10 @@ desktop computers.'
 
 { #category : #accessing }
 TBBlog class >> current [
-	"Answer the instance of the TBRepository"
 
-	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
+	^ self selectAll
+		  ifNotEmpty: [ :x | x anyOne ]
+		  ifEmpty: [ self new save ]
 ]
 
 { #category : #'class initialization' }
@@ -64,10 +62,23 @@ TBBlog class >> initialize [
 	self reset
 ]
 
+{ #category : #initialization }
+TBBlog class >> initializeVoyageOnMemoryDB [
+
+	VOMemoryRepository new enableSingleton
+]
+
+{ #category : #testing }
+TBBlog class >> isVoyageRoot [
+	"Indicates that instances of this class are top level documents in noSQL databases"
+
+	^ true
+]
+
 { #category : #'class initialization' }
 TBBlog class >> reset [
 
-	uniqueInstance := nil
+	self initializeVoyageOnMemoryDB
 ]
 
 { #category : #accessing }
@@ -112,7 +123,8 @@ TBBlog >> catetegoriesWithVisiblePosts [
 { #category : #accessing }
 TBBlog >> deleteCategoryAndPosts: aCategory [
 
-	posts removeAllSuchThat: [ :p | p category = aCategory ]
+	posts removeAllSuchThat: [ :p | p category = aCategory ].
+	self save
 ]
 
 { #category : #initialization }
@@ -124,7 +136,8 @@ TBBlog >> initialize [
 { #category : #removing }
 TBBlog >> removeAllPosts [
 
-	posts := OrderedCollection new
+	posts := OrderedCollection new.
+	self save
 ]
 
 { #category : #accessing }
@@ -133,7 +146,8 @@ TBBlog >> renameCategory: aCategory toBe: newCategory [
 	posts := posts collect: [ :p |
 		         p category = aCategory
 			         ifTrue: [ p category: newCategory ]
-			         ifFalse: [ p ] ]
+			         ifFalse: [ p ] ].
+	self save
 ]
 
 { #category : #accessing }
@@ -146,5 +160,6 @@ TBBlog >> size [
 TBBlog >> writeBlogPost: aPost [
 	"Add the blog post to the list of posts."
 
-	posts add: aPost
+	posts add: aPost.
+	self save
 ]
