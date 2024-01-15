@@ -10,9 +10,19 @@ BaselineOfTinyBlog >> baseline: spec [
 	<baseline>
 	spec for: #common do: [ "Dependencies"
 		self voyage: spec.
+		self seaside: spec.
 
 		"Packages"
 		spec package: 'TinyBlog' ]
+]
+
+{ #category : #'as yet unclassified' }
+BaselineOfTinyBlog >> seaside: spec [
+
+	spec
+		baseline: 'Seaside3'
+		with: [
+		spec repository: 'github://SeasideSt/Seaside:master/repository' ]
 ]
 
 { #category : #'as yet unclassified' }
