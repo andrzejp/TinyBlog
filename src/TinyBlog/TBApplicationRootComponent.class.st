@@ -1,6 +1,9 @@
 Class {
 	#name : #TBApplicationRootComponent,
 	#superclass : #WAComponent,
+	#instVars : [
+		'main'
+	],
 	#category : #'TinyBlog-Components'
 }
 
@@ -22,9 +25,23 @@ TBApplicationRootComponent class >> initialize [
 		addLibrary: SBSDeploymentLibrary
 ]
 
+{ #category : #hooks }
+TBApplicationRootComponent >> children [
+
+	^ { main }
+]
+
+{ #category : #initialization }
+TBApplicationRootComponent >> initialize [
+
+	super initialize.
+	main := TBScreenComponent new
+]
+
 { #category : #rendering }
 TBApplicationRootComponent >> renderContentOn: html [
-html text: 'TinyBlog'
+
+	html render: main
 ]
 
 { #category : #updating }
