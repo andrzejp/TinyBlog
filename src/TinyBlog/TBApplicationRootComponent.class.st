@@ -21,3 +21,16 @@ TBApplicationRootComponent class >> initialize [
 		addLibrary: JQUiDeploymentLibrary;
 		addLibrary: SBSDeploymentLibrary
 ]
+
+{ #category : #rendering }
+TBApplicationRootComponent >> renderContentOn: html [
+html text: 'TinyBlog'
+]
+
+{ #category : #updating }
+TBApplicationRootComponent >> updateRoot: anHtmlRoot [
+
+	super updateRoot: anHtmlRoot.
+	anHtmlRoot beHtml5.
+	anHtmlRoot title: 'TinyBlog'
+]
