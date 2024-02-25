@@ -49,7 +49,7 @@ TBBlogTest >> testAddBlogPost [
 TBBlogTest >> testAllBlogPosts [
 
 	blog writeBlogPost: post.
-	self assert: blog allPosts size equals: 2
+	self assert: blog allBlogPosts size equals: 2
 ]
 
 { #category : #tests }
@@ -103,13 +103,13 @@ TBBlogTest >> testDeleteCategoryAndPosts [
 	| newPost |
 	newPost := TBPost new category: 'New Category'.
 	blog writeBlogPost: newPost.
-	self assert: blog allPosts size equals: 2.
-	self assert: (blog allPosts includes: newPost).
+	self assert: blog allBlogPosts size equals: 2.
+	self assert: (blog allBlogPosts includes: newPost).
 
 	blog deleteCategoryAndPosts: 'New Category'.
 
-	self assert: blog allPosts size equals: 1.
-	self deny: (blog allPosts includes: newPost)
+	self assert: blog allBlogPosts size equals: 1.
+	self deny: (blog allBlogPosts includes: newPost)
 ]
 
 { #category : #tests }
@@ -154,6 +154,6 @@ TBBlogTest >> testSize [
 TBBlogTest >> testUnclassifiedBlogPosts [
 
 	self
-		assert: (blog allPosts select: [ :p | p isUnclassified ]) size
+		assert: (blog allBlogPosts select: [ :p | p isUnclassified ]) size
 		equals: 0
 ]

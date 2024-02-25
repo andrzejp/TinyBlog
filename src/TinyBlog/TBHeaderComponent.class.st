@@ -16,7 +16,14 @@ TBHeaderComponent >> renderBrandOn: html [
 { #category : #rendering }
 TBHeaderComponent >> renderContentOn: html [
 
-	html
-		navigationBar;
-		with: [ self renderBrandOn: html ]
+	| bar |
+	bar := html navigationBar.
+	bar background beLight.
+	bar with: [ html container: [ self renderBrandOn: html ] ]
+]
+
+{ #category : #rendering }
+TBHeaderComponent >> rendererClass [
+
+	^ SBSHtmlCanvas
 ]

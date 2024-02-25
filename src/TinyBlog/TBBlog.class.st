@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+TBBlog class >> allBlogPosts [
+	self shouldBeImplemented.
+]
+
+{ #category : #'as yet unclassified' }
 TBBlog class >> createDemoPosts [
 	"TBBlog createDemoPosts"
 
@@ -81,6 +86,12 @@ TBBlog class >> reset [
 	self initializeVoyageOnMemoryDB
 ]
 
+{ #category : #'as yet unclassified' }
+TBBlog >> allBlogPosts [
+
+	^ posts
+]
+
 { #category : #accessing }
 TBBlog >> allBlogPostsFromCategory: aCategory [
 
@@ -91,12 +102,6 @@ TBBlog >> allBlogPostsFromCategory: aCategory [
 TBBlog >> allCategories [
 
 	^ (posts collect: [ :post | post category ]) asSet
-]
-
-{ #category : #accessing }
-TBBlog >> allPosts [
-
-	^ posts
 ]
 
 { #category : #accessing }
