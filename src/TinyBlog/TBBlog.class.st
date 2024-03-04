@@ -2,7 +2,8 @@ Class {
 	#name : #TBBlog,
 	#superclass : #Object,
 	#instVars : [
-		'posts'
+		'posts',
+		'name'
 	],
 	#category : #'TinyBlog-Base'
 }
@@ -86,7 +87,7 @@ TBBlog class >> reset [
 	self initializeVoyageOnMemoryDB
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TBBlog >> allBlogPosts [
 
 	^ posts
@@ -135,7 +136,14 @@ TBBlog >> deleteCategoryAndPosts: aCategory [
 { #category : #initialization }
 TBBlog >> initialize [ 
 	super initialize.
-	posts := OrderedCollection new
+	posts := OrderedCollection new.
+	name := 'Andrzej''s Tiny Blog'
+]
+
+{ #category : #accessing }
+TBBlog >> name [
+
+	^ name
 ]
 
 { #category : #removing }

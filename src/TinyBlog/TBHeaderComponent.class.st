@@ -10,7 +10,7 @@ TBHeaderComponent >> renderBrandOn: html [
 	html navigationBar: [
 		html navigationBarBrand
 			url: self application url;
-			with: 'TinyBlog' ]
+			with: TBBlog current name ]
 ]
 
 { #category : #rendering }
