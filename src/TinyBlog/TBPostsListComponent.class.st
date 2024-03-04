@@ -8,5 +8,7 @@ Class {
 TBPostsListComponent >> renderContentOn: html [
 
 	super renderContentOn: html.
-	html text: 'Blog Posts here !!!'
+	html container: [
+		self blog allVisibleBlogPosts do: [ :p |
+			html render: (TBPostComponent new post: p) ] ]
 ]

@@ -38,3 +38,9 @@ TBScreenComponent >> renderContentOn: html [
 
 	html render: header
 ]
+
+{ #category : #rendering }
+TBScreenComponent >> rendererClass [
+
+	^ SBSHtmlCanvas
+]
