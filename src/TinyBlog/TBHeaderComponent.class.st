@@ -16,12 +16,21 @@ TBHeaderComponent >> renderBrandOn: html [
 ]
 
 { #category : 'rendering' }
+TBHeaderComponent >> renderButtonsOn: html [
+
+	self renderSimpleAdminButtonOn: html
+]
+
+{ #category : 'rendering' }
 TBHeaderComponent >> renderContentOn: html [
 
-	| bar |
-	bar := html navigationBar.
-	bar background beLight.
-	bar with: [ html container: [ self renderBrandOn: html ] ]
+	html
+		navigationBar;
+		beLight;
+		with: [
+			html container: [
+					self renderBrandOn: html.
+					self renderButtonsOn: html ] ]
 ]
 
 { #category : 'rendering' }
