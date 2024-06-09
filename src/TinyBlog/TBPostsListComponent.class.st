@@ -9,6 +9,14 @@ Class {
 	#tag : 'Components'
 }
 
+{ #category : 'rendering' }
+TBPostsListComponent >> categoriesComponent [
+
+	^ TBCategoriesComponent
+		  categories: self blog allCategories
+		  postsList: self
+]
+
 { #category : 'accessing' }
 TBPostsListComponent >> currentCategory [
 
@@ -19,6 +27,12 @@ TBPostsListComponent >> currentCategory [
 TBPostsListComponent >> currentCategory: anObject [
 
 	currentCategory := anObject
+]
+
+{ #category : 'rendering' }
+TBPostsListComponent >> postComponentFor: aPost [
+
+	^ TBPostComponent new post: aPost
 ]
 
 { #category : 'as yet unclassified' }
@@ -40,15 +54,12 @@ TBPostsListComponent >> renderContentOn: html [
 				extraSmallSize: 12;
 				smallSize: 2;
 				mediumSize: 4;
-				with: [
-					html render: (TBCategoriesComponent
-								 categories: self blog allCategories
-								 postsList: self) ].
+				with: [ html render: self categoriesComponent ].
 			html column
 				extraSmallSize: 12;
 				smallSize: 10;
 				mediumSize: 8;
 				with: [
 					self readSelectedPosts do: [ :p |
-							html render: (TBPostComponent new post: p) ] ] ] ]
+							html render: (self postComponentFor: p) ] ] ] ]
 ]
