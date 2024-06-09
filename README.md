@@ -2,7 +2,7 @@
 
 Following along with the [TinyBlog tutorial](https://github.com/SquareBracketAssociates/TinyBlog-EN).
 
-## Load into Pharo 11
+## Load into Pharo 12
 
 ```smalltalk
 Metacello new
