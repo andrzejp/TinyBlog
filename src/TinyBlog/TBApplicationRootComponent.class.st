@@ -1,19 +1,21 @@
 Class {
-	#name : #TBApplicationRootComponent,
-	#superclass : #WAComponent,
+	#name : 'TBApplicationRootComponent',
+	#superclass : 'WAComponent',
 	#instVars : [
 		'main'
 	],
-	#category : #'TinyBlog-Components'
+	#category : 'TinyBlog-Components',
+	#package : 'TinyBlog',
+	#tag : 'Components'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TBApplicationRootComponent class >> canBeRoot [
 
 	^ true
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TBApplicationRootComponent class >> initialize [
 	"self initialze"
 
@@ -25,32 +27,32 @@ TBApplicationRootComponent class >> initialize [
 		addLibrary: SBSDeploymentLibrary
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TBApplicationRootComponent >> children [
 
 	^ { main }
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TBApplicationRootComponent >> initialize [
 
 	super initialize.
 	main := TBPostsListComponent new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBApplicationRootComponent >> main: aComponent [
 
 	main := aComponent
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TBApplicationRootComponent >> renderContentOn: html [
 
 	html render: main
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 TBApplicationRootComponent >> updateRoot: anHtmlRoot [
 
 	super updateRoot: anHtmlRoot.

@@ -1,32 +1,34 @@
 Class {
-	#name : #TBPostComponent,
-	#superclass : #WAComponent,
+	#name : 'TBPostComponent',
+	#superclass : 'WAComponent',
 	#instVars : [
 		'post'
 	],
-	#category : #'TinyBlog-Components'
+	#category : 'TinyBlog-Components',
+	#package : 'TinyBlog',
+	#tag : 'Components'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPostComponent >> date [
 
 	^ post date
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TBPostComponent >> initialize [
 
 	super initialize.
 	post := TBPost new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPostComponent >> post: aTBPost [
 
 	post := aTBPost
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TBPostComponent >> renderContentOn: html [
 
 	html heading
@@ -38,13 +40,13 @@ TBPostComponent >> renderContentOn: html [
 	html text: self text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPostComponent >> text [
 
 	^ post text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPostComponent >> title [
 
 	^ post title

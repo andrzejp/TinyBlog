@@ -1,16 +1,18 @@
 Class {
-	#name : #TBBlogTest,
-	#superclass : #TestCase,
+	#name : 'TBBlogTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'blog',
 		'post',
 		'first',
 		'previousRepository'
 	],
-	#category : #'TinyBlog-Tests'
+	#category : 'TinyBlog-Tests',
+	#package : 'TinyBlog',
+	#tag : 'Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 TBBlogTest >> setUp [
 
 	super setUp.
@@ -31,28 +33,28 @@ TBBlogTest >> setUp [
 		         category: 'Second Category') beVisible
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TBBlogTest >> tearDown [
 
 	VORepository setRepository: previousRepository.
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testAddBlogPost [
 
 	blog writeBlogPost: post.
 	self assert: blog size equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testAllBlogPosts [
 
 	blog writeBlogPost: post.
 	self assert: blog allBlogPosts size equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testAllBlogPostsFromCategory [
 
 	self
@@ -60,21 +62,21 @@ TBBlogTest >> testAllBlogPostsFromCategory [
 		equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testAllCategories [
 
 	blog writeBlogPost: post.
 	self assert: blog allCategories size equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testAllVisibleBlogPosts [
 
 	blog writeBlogPost: post.
 	self assert: blog allVisibleBlogPosts size equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testAllVisibleBlogPostsFromCategory [
 
 	blog writeBlogPost: post.
@@ -88,7 +90,7 @@ TBBlogTest >> testAllVisibleBlogPostsFromCategory [
 		equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testCategoriesWithVisiblePosts [
 
 	blog writeBlogPost: post.
@@ -97,7 +99,7 @@ TBBlogTest >> testCategoriesWithVisiblePosts [
 		hasSameElements: #( 'Second Category' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testDeleteCategoryAndPosts [
 
 	| newPost |
@@ -112,14 +114,14 @@ TBBlogTest >> testDeleteCategoryAndPosts [
 	self deny: (blog allBlogPosts includes: newPost)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testRemoveAllBlogPosts [
 
 	blog removeAllPosts.
 	self assert: blog size equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testRenameCategory [
 
 	| postInCategoryA anotherPostInCategoryA |
@@ -144,13 +146,13 @@ TBBlogTest >> testRenameCategory [
 				anotherPostInCategoryA }
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testSize [
 
 	self assert: blog size equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBBlogTest >> testUnclassifiedBlogPosts [
 
 	self

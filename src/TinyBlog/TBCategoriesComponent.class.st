@@ -1,14 +1,16 @@
 Class {
-	#name : #TBCategoriesComponent,
-	#superclass : #WAComponent,
+	#name : 'TBCategoriesComponent',
+	#superclass : 'WAComponent',
 	#instVars : [
 		'categories',
 		'postsList'
 	],
-	#category : #'TinyBlog-Components'
+	#category : 'TinyBlog-Components',
+	#package : 'TinyBlog',
+	#tag : 'Components'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TBCategoriesComponent class >> categories: categories postsList: aTBScreen [
 
 	^ self new
@@ -16,31 +18,31 @@ TBCategoriesComponent class >> categories: categories postsList: aTBScreen [
 		  postsList: aTBScreen
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBCategoriesComponent >> categories [
 
 	^ categories
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBCategoriesComponent >> categories: aCollection [
 
 	categories := aCollection asSortedCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBCategoriesComponent >> postsList [
 
 	^ postsList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBCategoriesComponent >> postsList: aComponent [
 
 	postsList := aComponent
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 TBCategoriesComponent >> renderCategoryLinkOn: html with: aCategory [
 
 	html listGroupLinkedItem
@@ -49,7 +51,7 @@ TBCategoriesComponent >> renderCategoryLinkOn: html with: aCategory [
 		with: aCategory
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TBCategoriesComponent >> renderContentOn: html [
 
 	html listGroup: [
@@ -57,13 +59,13 @@ TBCategoriesComponent >> renderContentOn: html [
 		categories do: [ :cat | self renderCategoryLinkOn: html with: cat ] ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TBCategoriesComponent >> rendererClass [
 
 	^ SBSHtmlCanvas
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 TBCategoriesComponent >> selectCategory: aCategory [
 
 	postsList currentCategory: aCategory

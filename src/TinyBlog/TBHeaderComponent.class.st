@@ -1,10 +1,12 @@
 Class {
-	#name : #TBHeaderComponent,
-	#superclass : #WAComponent,
-	#category : #'TinyBlog-Components'
+	#name : 'TBHeaderComponent',
+	#superclass : 'WAComponent',
+	#category : 'TinyBlog-Components',
+	#package : 'TinyBlog',
+	#tag : 'Components'
 }
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TBHeaderComponent >> renderBrandOn: html [
 
 	html navigationBar: [
@@ -13,7 +15,7 @@ TBHeaderComponent >> renderBrandOn: html [
 			with: TBBlog current name ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TBHeaderComponent >> renderContentOn: html [
 
 	| bar |
@@ -22,7 +24,7 @@ TBHeaderComponent >> renderContentOn: html [
 	bar with: [ html container: [ self renderBrandOn: html ] ]
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TBHeaderComponent >> rendererClass [
 
 	^ SBSHtmlCanvas

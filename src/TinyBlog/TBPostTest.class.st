@@ -1,10 +1,12 @@
 Class {
-	#name : #TBPostTest,
-	#superclass : #TestCase,
-	#category : #'TinyBlog-Tests'
+	#name : 'TBPostTest',
+	#superclass : 'TestCase',
+	#category : 'TinyBlog-Tests',
+	#package : 'TinyBlog',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBPostTest >> testPostIsCreatedCorrectly [
 
 	| post |
@@ -16,7 +18,7 @@ TBPostTest >> testPostIsCreatedCorrectly [
 	self assert: post text equals: 'TinyBlog is a small blog engine made with Pharo.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBPostTest >> testStartsOffInvisible [
 	| post |
 	post := TBPost
@@ -26,7 +28,7 @@ TBPostTest >> testStartsOffInvisible [
 	self assert: (post isVisible) not
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TBPostTest >> testWithoutCategoryIsUnclassified [
 
 	| post |

@@ -1,6 +1,6 @@
 Class {
-	#name : #TBPost,
-	#superclass : #Object,
+	#name : 'TBPost',
+	#superclass : 'Object',
 	#instVars : [
 		'title',
 		'text',
@@ -8,10 +8,12 @@ Class {
 		'category',
 		'visible'
 	],
-	#category : #'TinyBlog-Base'
+	#category : 'TinyBlog-Base',
+	#package : 'TinyBlog',
+	#tag : 'Base'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TBPost class >> title: aTitle text: aText [
 	^ self new
 		title: aTitle;
@@ -19,48 +21,48 @@ TBPost class >> title: aTitle text: aText [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TBPost class >> title: aTitle text: aText category: aCategory [
 	^ (self title: aTitle text: aText)
 		category: aCategory;
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TBPost class >> unclassifiedTag [
 	^ 'Unclassified'
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 TBPost >> beVisible [ 
 	self visible: true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPost >> category [
 
 	^ category
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPost >> category: anObject [
 
 	category := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPost >> date [
 
 	^ date
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPost >> date: anObject [
 
 	date := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TBPost >> initialize [ 
 	super initialize.
 	self category: self class unclassifiedTag.
@@ -68,52 +70,52 @@ TBPost >> initialize [
 	self notVisible
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TBPost >> isUnclassified [
 	^ self category = self class unclassifiedTag 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TBPost >> isVisible [
 	^ self visible
 ]
 
-{ #category : #action }
+{ #category : 'action' }
 TBPost >> notVisible [
 	self visible: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPost >> text [
 
 	^ text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPost >> text: anObject [
 
 	text := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPost >> title [
 
 	^ title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPost >> title: anObject [
 
 	title := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPost >> visible [
 
 	^ visible
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBPost >> visible: anObject [
 
 	visible := anObject

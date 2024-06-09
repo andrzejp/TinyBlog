@@ -1,19 +1,21 @@
 Class {
-	#name : #TBBlog,
-	#superclass : #Object,
+	#name : 'TBBlog',
+	#superclass : 'Object',
 	#instVars : [
 		'posts',
 		'name'
 	],
-	#category : #'TinyBlog-Base'
+	#category : 'TinyBlog-Base',
+	#package : 'TinyBlog',
+	#tag : 'Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TBBlog class >> allBlogPosts [
 	self shouldBeImplemented.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TBBlog class >> createDemoPosts [
 	"TBBlog createDemoPosts"
 
@@ -54,7 +56,7 @@ desktop computers.'
 				  category: 'Pharo') visible: true)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog class >> current [
 
 	^ self selectAll
@@ -62,63 +64,63 @@ TBBlog class >> current [
 		  ifEmpty: [ self new save ]
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TBBlog class >> initialize [
 
 	self reset
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TBBlog class >> initializeVoyageOnMemoryDB [
 
 	VOMemoryRepository new enableSingleton
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TBBlog class >> isVoyageRoot [
 	"Indicates that instances of this class are top level documents in noSQL databases"
 
 	^ true
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TBBlog class >> reset [
 
 	self initializeVoyageOnMemoryDB
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog >> allBlogPosts [
 
 	^ posts
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog >> allBlogPostsFromCategory: aCategory [
 
 	^ posts select: [ :post | post category = aCategory ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog >> allCategories [
 
 	^ (posts collect: [ :post | post category ]) asSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog >> allVisibleBlogPosts [
 
 	^ posts select: [ :post | post isVisible ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog >> allVisibleBlogPostsFromCategory: aCategory [
 
 	^ (self allBlogPostsFromCategory: aCategory) select: [ :post |
 		  post isVisible ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog >> catetegoriesWithVisiblePosts [
 
 	^ (posts
@@ -126,34 +128,34 @@ TBBlog >> catetegoriesWithVisiblePosts [
 		   thenCollect: [ :p | p category ]) asSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog >> deleteCategoryAndPosts: aCategory [
 
 	posts removeAllSuchThat: [ :p | p category = aCategory ].
 	self save
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TBBlog >> initialize [ 
 	super initialize.
 	posts := OrderedCollection new.
 	name := 'Andrzej''s Tiny Blog'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog >> name [
 
 	^ name
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 TBBlog >> removeAllPosts [
 
 	posts := OrderedCollection new.
 	self save
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog >> renameCategory: aCategory toBe: newCategory [
 
 	posts := posts collect: [ :p |
@@ -163,13 +165,13 @@ TBBlog >> renameCategory: aCategory toBe: newCategory [
 	self save
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TBBlog >> size [
 
 	^ posts size
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 TBBlog >> writeBlogPost: aPost [
 	"Add the blog post to the list of posts."
 
