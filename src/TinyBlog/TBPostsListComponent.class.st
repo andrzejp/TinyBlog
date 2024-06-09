@@ -45,21 +45,33 @@ TBPostsListComponent >> readSelectedPosts [
 ]
 
 { #category : 'rendering' }
+TBPostsListComponent >> renderCategoryColumnOn: html [
+
+	html column
+		extraSmallSize: 12;
+		smallSize: 2;
+		mediumSize: 4;
+		with: [ html render: self categoriesComponent ]
+]
+
+{ #category : 'rendering' }
 TBPostsListComponent >> renderContentOn: html [
 
 	super renderContentOn: html.
 	html container: [
 		html row with: [
-			html column
-				extraSmallSize: 12;
-				smallSize: 2;
-				mediumSize: 4;
-				with: [ html render: self categoriesComponent ].
-			html column
-				extraSmallSize: 12;
-				smallSize: 10;
-				mediumSize: 8;
-				with: [
-					self readSelectedPosts do: [ :p |
-							html render: (self postComponentFor: p) ] ] ] ]
+			self renderCategoryColumnOn: html.
+			self renderPostColumnOn: html ] ]
+]
+
+{ #category : 'rendering' }
+TBPostsListComponent >> renderPostColumnOn: html [
+
+	^ html column
+		  extraSmallSize: 12;
+		  smallSize: 10;
+		  mediumSize: 8;
+		  with: [
+			  self readSelectedPosts do: [ :p |
+					  html render: (self postComponentFor: p) ] ]
 ]
